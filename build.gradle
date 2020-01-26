@@ -11,8 +11,18 @@ repositories {
     mavenCentral()
 }
 
+ext{
+    mainClass = 'pl.kkurczewski.Main'
+}
+
 dependencies {
     def immutablesVersion = "2.8.2"
     annotationProcessor "org.immutables:value:$immutablesVersion"
     compileOnly "org.immutables:value:$immutablesVersion"
+}
+
+jar {
+    manifest {
+        attributes('Main-Class': project.ext.mainClass)
+    }
 }
